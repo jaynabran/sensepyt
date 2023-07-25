@@ -3,20 +3,21 @@ import time
 import network
 #from umqtt.simple import MQTTClient
 import ujson
-import urequests as requests
-from utelegram import Bot
+import urequests
+#from utelegram import Bot
 
 #Bot telegram
 CHAT_ID = "5321453259" #mio
 #CHAT_ID = "-863734460" #Grupo
 TOKEN = "6367476178:AAFvyXryIcCb5SX193RGGh30t7sPsoxABuE"
-bot = Bot(TOKEN)
+#bot = Bot(TOKEN)
 
 #Config de la red
 SSID = "ALEXIS 2.4_5GETB"
 PASSWORD = "Bran-1997*/"
 
 #Asigna Pines
+SENSOR1_MAG_PIN = 12
 SENSOR1_MOV_PIN = 13
 LED1_PIN = 2
 
@@ -36,7 +37,7 @@ def wifiConnect():
 def notif_Telegram(message):
     url = "https://api.telegram.org/bot" + TOKEN + "/sendMessage"
     data = {"chat_id": CHAT_ID, "text": message}
-    response = requests.post(url, json=data)
+    response = urequests.get(url, json=data)
     return response.json()
 
 #Sensor_1 de movimiento
@@ -63,6 +64,7 @@ def setup():
     wifiConnect()
     #bot.start_loop()
     configPines()
+    
         
 setup()
 
