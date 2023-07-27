@@ -10,7 +10,6 @@ from machine import UART
 import uasyncio as asyncio
 
 
-
 #Datos Bot telegram
 CHAT_ID = "5321453259" #mio
 #CHAT_ID = "-863734460" #Grupo
